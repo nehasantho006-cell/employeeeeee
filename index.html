@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Management App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <h1>👥 Employee Management</h1>
+          <button class="btn btn-primary" id="addEmployeeBtn">
+            + Add Employee
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main">
+        <!-- Stats -->
+        <div class="stats-bar">
+          <div class="stat-card">
+            <span class="stat-number" id="totalCount">0</span>
+            <span class="stat-label">Total Employees</span>
+          </div>
+        </div>
+
+        <!-- Employee Table -->
+        <div class="table-container">
+          <table class="employee-table" id="employeeTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Department</th>
+                <th>Salary</th>
+                <th>Phone</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="employeeTableBody">
+              <tr>
+                <td colspan="8" class="loading-row">Loading employees...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+
+      <!-- Modal: Add / Edit Employee -->
+      <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+          <div class="modal-header">
+            <h2 id="modalTitle">Add Employee</h2>
+            <button type="button" class="modal-close" id="modalClose">&times;</button>
+          </div>
+          <form id="employeeForm" class="modal-body">
+            <input type="hidden" id="employeeId" />
+
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="john@example.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="position">Position *</label>
+              <input
+                type="text"
+                id="position"
+                placeholder="Software Engineer"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="department">Department *</label>
+              <input
+                type="text"
+                id="department"
+                placeholder="Engineering"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="salary">Salary *</label>
+              <input
+                type="number"
+                id="salary"
+                placeholder="50000"
+                required
+                min="0"
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="text" id="phone" placeholder="+91-9876543210" />
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-secondary" id="cancelBtn">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary" id="submitBtn">
+                Save Employee
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Toast Notification -->
+      <div class="toast" id="toast"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
